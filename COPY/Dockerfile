@@ -1,4 +1,5 @@
-FROM almalinux
-RUN yum install epel-release -y
+FROM almalinux:8
 RUN yum install nginx -y
-COPY testfile /tmp/ 
+RUN rm -rf /usr/share/nginx/html/index.html
+COPY qi /usr/share/nginx/html/
+CMD ["nginx", "-g", "daemon off;"]
